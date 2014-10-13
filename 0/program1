@@ -1,0 +1,32 @@
+function digRow()
+  
+  rowLen = 50
+  
+  for i=0,rowLen,1 do
+    turtle.dig()
+    turtle.digUp()
+    turtle.forward()
+  end
+
+  turtle.turnRight()
+  turtle.turnRight()
+  
+  for i=0,rowLen,1 do
+    turtle.dig()
+    turtle.forward()
+  end
+end
+
+function digLayer()
+  layerLen = 5
+  
+  for i=0,layerLen,1 do
+    digRow()
+    turtle.turnLeft()
+    turtle.dig()
+    turltle.forward()
+    turtle.turnLeft()
+  end
+end
+
+digLayer()
