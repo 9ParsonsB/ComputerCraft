@@ -1,6 +1,6 @@
-function digRow()
+function digRow(x)
   
-  rowLen = 50
+  rowLen = tonumber(x)
   
   for i=0,rowLen,1 do
     turtle.dig()
@@ -8,25 +8,29 @@ function digRow()
     turtle.forward()
   end
 
-  turtle.turnRight()
-  turtle.turnRight()
-  
-  for i=0,rowLen,1 do
-    turtle.dig()
-    turtle.forward()
-  end
 end
 
-function digLayer()
-  layerLen = 5
+function digLayer(x,y)
+  layerLen = y
   
   for i=0,layerLen,1 do
-    digRow()
+    digRow(x)
+    turtle.turnRight()
+    turtle.dig()
+    turtle.forward()
+    turtle.turnRight()
+    digRow(x)
     turtle.turnLeft()
     turtle.dig()
-    turltle.forward()
-    turtle.turnLeft()
+    turtle.forward()
+    turtle.turnLeft() 
   end
 end
 
-digLayer()
+local tArgs = {...}
+if tArgs == 0 then
+  print("Missing args")
+  exit()
+end
+print(tArgs[2])
+digLayer(tArgs[1],tArgs[2])
